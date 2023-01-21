@@ -1,10 +1,17 @@
 <% layout('./default') %>
 
-<form action="/save-<%= it.entity.name %>" method="post">
+<form
+  action="/save-<%= it.entity.name %>"
+  method="post"
+  enctype="multipart/form-data"
+>
   <% it.entity.rows.forEach(function(row){ %>
-  <label for="<%= row %>">
-    <%= row %>
-    <input type="text" id="<%= row %>" name="<%= row %>" required />
+  <label for="<%= row.name %>">
+    <%= row.name %> <% if (row.type === "text") { %>
+    <input type="text" id="<%= row.name %>" name="<%= row.name %>" required />
+    <% } else { %>
+    <input type="file" id="<%= row.name %>" name="<%= row.name %>" required />
+    <% } %>
   </label>
   <% }) %>
 

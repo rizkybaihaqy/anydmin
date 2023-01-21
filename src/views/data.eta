@@ -1,12 +1,14 @@
 <% layout('./default') %>
 
-<a href="/create-<%= it.entity.name %>" role="button">Create <%= it.entity.name %></a>
+<a href="/create-<%= it.entity.name %>" role="button"
+  >Create <%= it.entity.name %></a
+>
 
 <table>
   <thead>
     <tr>
-      <% it.entity.rows.forEach(function(row){ %>
-      <th><%=row%></th>
+      <% Object.keys(it.itemsRes[0].data).forEach(function(key) { %>
+      <th><%= [key] %></th>
       <% }) %>
       <th>action</th>
     </tr>
@@ -15,7 +17,11 @@
     <% it.itemsRes.forEach(function(item){ %>
     <tr>
       <% Object.keys(item.data).forEach(function(key) { %>
-      <td><%= item.data[key] %></td>
+        <% if (it.entity.rows.find(row => row.name === key).type === 'file') { %>
+          <td><img src="<%= item.data[key] %>" alt="img"></td>
+        <% } else { %>
+          <td><%= item.data[key] %></td>
+        <% } %>
       <% }) %>
       <td>
         <form action="/destroy-<%= it.entity.name %>" method="post">
