@@ -6,8 +6,9 @@ Basic create, read, ~~update~~, delete app using express js and hosted on deta.s
 
 1. Clone this repo
 2. Configure the app at `./src/config/app.ts`
-3. Create account at deta.sh
-4. Download deta cli
-5. Run deta cli to this repo
+3. Run `npm run build`
+4. Create account at deta.sh
+5. Download deta cli
+6. Run deta cli to this repo
    `deta new --node ./anydmin`
-6. Find the url in console and its done
+7. Find the url in console and its done

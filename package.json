@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/bin/www.ts",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "deta:deploy": "npm run build && deta deploy && deta update -e .env",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
