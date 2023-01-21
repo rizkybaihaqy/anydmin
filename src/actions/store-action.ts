@@ -3,6 +3,7 @@ import Drive from "deta/dist/types/drive";
 import { Express } from "express";
 import { UploadedFile } from "express-fileupload";
 import { Entity } from "../types";
+import { nanoid } from "nanoid";
 
 export default (app: Express) =>
   (db: Base) =>
@@ -19,7 +20,7 @@ export default (app: Express) =>
       const uploaded = await Promise.all(
         rowsFile.map(async (row) => {
           const file = req.files![row.name] as UploadedFile;
-          const response = await storage.put(file.name, {
+          const response = await storage.put(nanoid() + "_" + row.name, {
             data: file.data,
           });
           return response;
