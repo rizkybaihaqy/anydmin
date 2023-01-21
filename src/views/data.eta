@@ -1,0 +1,30 @@
+<% layout('./default') %>
+
+<a href="/create-<%= it.entity.name %>" role="button">Create <%= it.entity.name %></a>
+
+<table>
+  <thead>
+    <tr>
+      <% it.entity.rows.forEach(function(row){ %>
+      <th><%=row%></th>
+      <% }) %>
+      <th>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% it.itemsRes.forEach(function(item){ %>
+    <tr>
+      <% Object.keys(item.data).forEach(function(key) { %>
+      <td><%= item.data[key] %></td>
+      <% }) %>
+      <td>
+        <form action="/destroy-<%= it.entity.name %>" method="post">
+          <button name="key" value="<%= item.key %>" type="submit">
+            Delete
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

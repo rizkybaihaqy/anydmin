@@ -1,0 +1,12 @@
+<% layout('./default') %>
+
+<form action="/save-<%= it.entity.name %>" method="post">
+  <% it.entity.rows.forEach(function(row){ %>
+  <label for="<%= row %>">
+    <%= row %>
+    <input type="text" id="<%= row %>" name="<%= row %>" required />
+  </label>
+  <% }) %>
+
+  <button type="submit">Submit</button>
+</form>
