@@ -12,7 +12,10 @@
   <body>
     <nav class="container">
       <ul>
-        <% it.entities.forEach(function(entity){ %>
+        <li><strong><%= it.appSetting.name %></strong></li>
+      </ul>
+      <ul>
+        <% it.appSetting.entities.forEach(function(entity){ %>
         <li><a href="/<%= entity.name %>"><%= entity.name %></a></li>
         <% }) %>
       </ul>
